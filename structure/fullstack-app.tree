@@ -1,0 +1,160 @@
+fullstack-app/
+├── apps/
+│   ├── frontend/
+│   │   ├── public/
+│   │   │   ├── index.html
+│   │   │   └── favicon.ico
+│   │   ├── src/
+│   │   │   ├── components/
+│   │   │   │   ├── common/
+│   │   │   │   │   ├── Button.tsx
+│   │   │   │   │   └── Input.tsx
+│   │   │   │   └── layout/
+│   │   │   │       ├── Header.tsx
+│   │   │   │       └── Footer.tsx
+│   │   │   ├── pages/
+│   │   │   │   ├── Home.tsx
+│   │   │   │   └── Dashboard.tsx
+│   │   │   ├── hooks/
+│   │   │   │   └── useAuth.ts
+│   │   │   ├── services/
+│   │   │   │   └── api.ts
+│   │   │   ├── store/
+│   │   │   │   └── authSlice.ts
+│   │   │   ├── utils/
+│   │   │   │   └── helpers.ts
+│   │   │   ├── App.tsx
+│   │   │   └── main.tsx
+│   │   ├── tests/
+│   │   │   └── App.test.tsx
+│   │   ├── package.json
+│   │   ├── tsconfig.json
+│   │   ├── vite.config.ts
+│   │   └── tailwind.config.js
+│   │
+│   └── backend/
+│       ├── src/
+│       │   ├── controllers/
+│       │   │   ├── authController.ts
+│       │   │   └── userController.ts
+│       │   ├── models/
+│       │   │   ├── User.ts
+│       │   │   └── Post.ts
+│       │   ├── routes/
+│       │   │   ├── auth.ts
+│       │   │   └── users.ts
+│       │   ├── middlewares/
+│       │   │   ├── auth.ts
+│       │   │   └── errorHandler.ts
+│       │   ├── services/
+│       │   │   └── userService.ts
+│       │   ├── utils/
+│       │   │   └── validators.ts
+│       │   ├── config/
+│       │   │   └── db.ts
+│       │   └── app.ts
+│       ├── tests/
+│       │   ├── unit/
+│       │   │   ├── controllers/
+│       │   │   │   └── userController.test.ts
+│       │   │   ├── services/
+│       │   │   │   └── userService.test.ts
+│       │   │   └── utils/
+│       │   │       └── validators.test.ts
+│       │   ├── integration/
+│       │   │   ├── auth.test.ts
+│       │   │   └── api.test.ts
+│       │   ├── fixtures/
+│       │   │   └── userFixture.ts
+│       │   └── setup.ts
+│       ├── package.json
+│       ├── tsconfig.json
+│       └── .env.example
+│
+├── packages/
+│   ├── shared/
+│   │   ├── src/
+│   │   │   ├── types/
+│   │   │   │   ├── user.ts
+│   │   │   │   └── api.ts
+│   │   │   └── constants/
+│   │   │       └── index.ts
+│   │   ├── package.json
+│   │   └── tsconfig.json
+├── infra/
+│   ├── docker/
+│   │   ├── Dockerfile.frontend
+│   │   ├── Dockerfile.backend
+│   │   └── docker-compose.yml
+│   ├── kubernetes/
+│   │   ├── namespaces/
+│   │   │   └── app-namespace.yaml
+│   │   ├── deployments/
+│   │   │   ├── frontend-deployment.yaml
+│   │   │   └── backend-deployment.yaml
+│   │   ├── services/
+│   │   │   ├── frontend-service.yaml
+│   │   │   └── backend-service.yaml
+│   │   ├── ingress/
+│   │   │   └── ingress.yaml
+│   │   └── secrets/
+│   │       └── app-secrets.yaml
+│   ├── terraform/
+│   │   ├── main.tf
+│   │   ├── variables.tf
+│   │   ├── outputs.tf
+│   │   └── providers.tf
+│   ├── helm/
+│   │   └── app-chart/
+│   │       ├── Chart.yaml
+│   │       ├── values.yaml
+│   │       └── templates/
+│   │           ├── deployment.yaml
+│   │           ├── service.yaml
+│   │           └── ingress.yaml
+│   ├── scripts/
+│   │   ├── init-cluster.sh
+│   │   └── deploy.sh
+│   └── README.md
+│
+├── docs/
+│   ├── api/
+│   │   ├── openapi.yaml
+│   │   ├── endpoints/
+│   │   │   ├── auth.md
+│   │   │   ├── users.md
+│   │   │   └── posts.md
+│   │   └── schemas/
+│   │       ├── user.yaml
+│   │       └── post.yaml
+│   ├── guides/
+│   │   ├── setup.md
+│   │   ├── deployment.md
+│   │   ├── environment-variables.md
+│   │   └── troubleshooting.md
+│   ├── architecture/
+│   │   ├── system-overview.md
+│   │   ├── database-schema.md
+│   │   ├── microservices.md
+│   │   └── ci-cd.md
+│   ├── testing/
+│   │   ├── unit-testing.md
+│   │   ├── integration-testing.md
+│   │   └── e2e-testing.md
+│   ├── policies/
+│   │   ├── coding-standards.md
+│   │   ├── branching-strategy.md
+│   │   └── code-review.md
+│   ├── faq.md
+│   ├── changelog.md
+│   └── README.md
+│
+├── scripts/
+│   ├── build.sh
+│   └── deploy.sh
+│
+├── .gitignore
+├── package.json
+├── pnpm-workspace.yaml
+├── turbo.json
+└── README.md
