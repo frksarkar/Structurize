@@ -33,7 +33,7 @@ class TemplateProcessor:
 
     def extract_name_and_doc(self, template_file: list[str]):
         speared_name_and_doc = []
-        separator = self.d_config._doc_separator
+        separator = self.d_config.doc_separator
         for line in template_file:
             if separator in line:
                 path_part, doc_part = line.split(separator, 1)
