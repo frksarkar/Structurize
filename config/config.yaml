@@ -1,8 +1,11 @@
 # Project structure generator config
 
-output_dir: 'output'
-_working_dir: 'structure'
-file_path: 'structure.tree'
+#path: 'structure'
+path:
+    output_dir: 'output'
+    working_dir: 'structure'
+    file_path: 'structure.tree'
+
 mode: 'dry-run' # options: normal, dry-run, verbose
 multi_file_mode: true
 indent: 4
@@ -13,4 +16,4 @@ variables:
     author: 'Your Name'
 
 # Comment marker for documentation (optional)
-doc_comment_marker: '##'
+doc_separator: '##'
