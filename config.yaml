@@ -1,0 +1,16 @@
+# Project structure generator config
+
+output_dir: 'output'
+_working_dir: 'structure'
+file_path: 'structure.tree'
+mode: 'dry-run' # options: normal, dry-run, verbose
+multi_file_mode: true
+indent: 4
+
+# Optional: custom variables for templates (future use)
+variables:
+    project_name: 'MyApp'
+    author: 'Your Name'
+
+# Comment marker for documentation (optional)
+doc_comment_marker: '##'

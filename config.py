@@ -1,0 +1,84 @@
+from pathlib import Path
+from dataclasses import dataclass, field
+from Type import RunMode
+import yaml
+
+
+@dataclass()
+class Config:
+    # default value defined
+    _current_file_path: Path = Path(__file__).resolve()
+    _base_path: Path = _current_file_path.parent
+    _output_dir: Path = field(default=Path("generated_project"))
+    _working_dir: Path = field(default=Path("structure"))
+    _file_path: Path = field(default=Path("structure.tree"))
+    _INVALID_FILENAMES = frozenset(
+        [
+            ".",
+            "..",
+            "...",
+            "con",
+            "prn",
+            "aux",
+            "nul",
+            "com1",
+            "com2",
+            "com3",
+            "com4",
+            "com5",
+            "com6",
+            "com7",
+            "com8",
+            "com9",
+        ]
+    )
+    _doc_separator = "#"
+
+    @property
+    def file_path(self) -> Path:
+        return self.base_path / self._working_dir / self._file_path
+
+    @property
+    def base_path(self):
+        return self._base_path
+
+    @property
+    def output_dir(self):
+        return self.base_path / self._output_dir
+
+    @property
+    def working_dir(self):
+        return self.base_path / self._working_dir
+
+    @base_path.setter
+    def base_path(self, pathname: Path):
+        self._base_path = Path(pathname).resolve()
+
+    @output_dir.setter
+    def output_dir(self, output_dir: str):
+        self._output_dir = Path(output_dir)
+
+    @working_dir.setter
+    def working_dir(self, working_dir: str):
+        self._working_dir = Path(working_dir)
+
+    @file_path.setter
+    def file_path(self, file_path: str):
+        self._file_path = self.base_path / self._working_dir / file_path
+
+    # behavior config
+    mode: RunMode = field(default=RunMode.NORMAL, init=False)  # RunMode.DRY_RUN
+    multi_file_mode: bool = True
+    invalid_filenames: frozenset = field(default=_INVALID_FILENAMES, init=False)
+    indent: int = 4
+
+    def load_config(self, config_path: Path | None = None):
+        config_path = config_path or (self.base_path / "config.yaml")
+        if not config_path.exists():
+            return print('"config.yaml" not found')
+
+        with open(self.base_path / "config.yaml", "r", encoding="utf-8") as f:
+            loadConfig = yaml.safe_load(f)
+
+        for key, value in loadConfig.items():
+            setattr(self, key, value)
