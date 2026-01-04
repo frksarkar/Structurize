@@ -1,6 +1,6 @@
 from Type import Path_Data
 from config.config import Config
-from text_cleaner import TextCleaner, TextCleanerPro
+from utils.text_cleaner import TextCleaner, TextCleanerPro
 
 
 class TemplateProcessor:

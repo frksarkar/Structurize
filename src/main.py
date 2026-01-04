@@ -1,15 +1,15 @@
 import os
 
-# import sys
-# sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+import sys
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from config.config import Config
-from src.utils.validation import Validation
-from src.utils.file_io import FileManage
-from src.core.template_parser import TemplateProcessor
-from src.utils.path_builder import PathBuilder
-from src.core.folder_builder import FolderGenerator
-from src.utils.text_cleaner import TextCleaner
+from utils.validation import Validation
+from utils.file_io import FileManage
+from core.template_parser import TemplateProcessor
+from utils.path_builder import PathBuilder
+from core.folder_builder import FolderGenerator
+from utils.text_cleaner import TextCleaner
 
 
 class Main:
@@ -18,7 +18,6 @@ class Main:
         self.v_field = Validation(self.d_config)
 
     def run_files(self):
-        self.d_config.load_config()
         files = os.listdir(self.d_config.working_dir)
         tree_files = [file for file in files if file.endswith(".tree")]
 

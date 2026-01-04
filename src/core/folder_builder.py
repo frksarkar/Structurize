@@ -1,7 +1,7 @@
 from typing import Tuple
 from tqdm import tqdm
 from pathlib import Path
-from utility import Validation
+from utils.validation import Validation
 from Type import Path_Data
 
 

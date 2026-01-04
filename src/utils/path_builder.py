@@ -1,5 +1,5 @@
 from Type import Path_Data
-from utility import Validation
+from utils.validation import Validation
 
 
 class PathBuilder:

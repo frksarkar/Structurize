@@ -7,8 +7,9 @@ import yaml
 @dataclass()
 class Config:
     # default value defined
-    _current_file_path: Path = Path(__file__).resolve()
+    _current_file_path: Path = Path(__file__).resolve().parent
     _base_path: Path = _current_file_path.parent
+    _default_config_path: Path = Path(__file__).resolve().parent / "config.yaml"
     _output_dir: Path = field(default=Path("generated_project"))
     _working_dir: Path = field(default=Path("structure"))
     _file_path: Path = field(default=Path("structure.tree"))
@@ -72,12 +73,15 @@ class Config:
     invalid_filenames: frozenset = field(default=_INVALID_FILENAMES, init=False)
     indent: int = 4
 
-    def load_config(self, config_path: Path | None = None):
-        config_path = config_path or (self.base_path / "config.yaml")
-        if not config_path.exists():
-            return print('"config.yaml" not found')
+    def __post_init__(self):
+        self.load_config()
 
-        with open(self.base_path / "config.yaml", "r", encoding="utf-8") as f:
+
+    def load_config(self):
+        if not self._default_config_path.exists():
+            return print('"config.yaml" not found', self._default_config_path)
+
+        with open(self._default_config_path, "r", encoding="utf-8") as f:
             loadConfig = yaml.safe_load(f)
 
         for key, value in loadConfig.items():
