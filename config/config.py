@@ -33,7 +33,7 @@ class Config:
             "com9",
         ]
     )
-    _doc_separator = "#"
+    doc_separator = "/"
 
     @property
     def file_path(self) -> Path:
@@ -84,5 +84,11 @@ class Config:
         with open(self._default_config_path, "r", encoding="utf-8") as f:
             loadConfig = yaml.safe_load(f)
 
+        self.loop_config(loadConfig)
+
+    def loop_config(self, loadConfig: dict):
         for key, value in loadConfig.items():
+            if isinstance(value, dict) or isinstance(value, list):
+                self.loop_config(value)
+                continue
             setattr(self, key, value)
