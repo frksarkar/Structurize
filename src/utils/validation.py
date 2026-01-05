@@ -1,5 +1,5 @@
 import os
-from config.config import Config
+from config.ConfigManager import Config
 
 
 class Validation:

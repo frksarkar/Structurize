@@ -3,9 +3,9 @@ from utils.validation import Validation
 
 
 class PathBuilder:
-    def __init__(self, validation: Validation, indent=4) -> None:
+    def __init__(self, validation: Validation, indent: int =4) -> None:
         self.__validation = validation
-        self._template_paths: list = []
+        self._template_paths: Path_Data = []
         self._indent = indent
 
     def find_indent_level(self, line: str):
@@ -16,8 +16,8 @@ class PathBuilder:
     def build_path(self, template_file: Path_Data):
         if not template_file:
             return
-        _template_stack = []
-        _remove_duplicate = set()
+        _template_stack: list[str] = []
+        _remove_duplicate: set[tuple[str, str]] = set()
 
         for line in template_file:
             level = self.find_indent_level(line[0])

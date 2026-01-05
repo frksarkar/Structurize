@@ -1,9 +1,9 @@
 from enum import Enum
-from typing import List, Pattern, Sequence
+from typing import List, Pattern, Sequence, TypeAlias, Union
 
-
-ReplacementRule = List[tuple[Pattern, str]]
+ReplacementRule = List[tuple[Pattern[str], str]]
 Path_Data = Sequence[tuple[str, str]]
+ConfigType: TypeAlias = dict[str, Union[str, "ConfigType", list[str]]]
 
 
 class TextCleanerPro(Enum):

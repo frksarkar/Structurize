@@ -1,7 +1,8 @@
 from pathlib import Path
 from dataclasses import dataclass, field
-from Type import RunMode
+from Type import RunMode, ConfigType
 import yaml
+from typing import cast
 
 
 @dataclass()
@@ -70,7 +71,7 @@ class Config:
     # behavior config
     mode: RunMode = field(default=RunMode.NORMAL, init=False)  # RunMode.DRY_RUN
     multi_file_mode: bool = True
-    invalid_filenames: frozenset = field(default=_INVALID_FILENAMES, init=False)
+    invalid_filenames: frozenset[str] = field(default=_INVALID_FILENAMES, init=False)
     indent: int = 4
 
     def __post_init__(self):
@@ -82,13 +83,14 @@ class Config:
             return print('"config.yaml" not found', self._default_config_path)
 
         with open(self._default_config_path, "r", encoding="utf-8") as f:
-            loadConfig = yaml.safe_load(f)
-
+            loadConfig: ConfigType = yaml.safe_load(f)
         self.loop_config(loadConfig)
 
-    def loop_config(self, loadConfig: dict):
+    def loop_config(self, loadConfig: ConfigType):
         for key, value in loadConfig.items():
             if isinstance(value, dict) or isinstance(value, list):
-                self.loop_config(value)
+                self.loop_config(cast(ConfigType, value))
                 continue
             setattr(self, key, value)
+
+

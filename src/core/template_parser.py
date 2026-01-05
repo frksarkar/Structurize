@@ -1,5 +1,5 @@
 from Type import Path_Data
-from config.config import Config
+from config.ConfigManager import Config
 from utils.text_cleaner import TextCleaner, TextCleanerPro
 
 
@@ -13,7 +13,7 @@ class TemplateProcessor:
     def strip_tree_symbols(self):
         if not self.clean_path:
             return
-        clean_path = []
+        clean_path: Path_Data = []
         for line in self.clean_path:
             name = self.config.clean_text(TextCleanerPro.TREE, line[0])
             if name.isspace():
@@ -24,7 +24,7 @@ class TemplateProcessor:
     def clean_template_file(self):
         if not self.clean_path:
             return
-        clean_path = []
+        clean_path: Path_Data = []
 
         for line in self.clean_path:
             name = self.config.clean_text(TextCleanerPro.COMMENT, line[0])
@@ -32,7 +32,7 @@ class TemplateProcessor:
         self.clean_path = clean_path
 
     def extract_name_and_doc(self, template_file: list[str]):
-        speared_name_and_doc = []
+        speared_name_and_doc: Path_Data = []
         separator = self.d_config.doc_separator
         for line in template_file:
             if separator in line:

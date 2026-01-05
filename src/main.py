@@ -39,13 +39,13 @@ class Main:
         fm = FileManage(self.d_config.file_path)
         fm.read_structure_file()
         tp = TemplateProcessor(TextCleaner())
-        tp.extract_name_and_doc(fm._template_file)
+        tp.extract_name_and_doc(fm.template_file)
         tp.clean_template_file()
         tp.strip_tree_symbols()
         fs = PathBuilder(self.v_field, self.d_config.indent)
         fs.build_path(tp.clean_path)
         gf = FolderGenerator(self.v_field, self.d_config.output_dir)
-        gf.generate_folder(fs._template_paths)
+        gf.generate_folder(fs.template_paths)
 
 
 if __name__ == "__main__":
