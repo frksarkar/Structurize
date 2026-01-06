@@ -4,11 +4,12 @@
 path:
     output_dir: 'output'
     working_dir: 'structure'
-    file_path: 'structure.tree'
+    file_path: 'structure.tree' # optional if multi_file_mode is false
 
 mode: 'dry-run' # options: normal, dry-run, verbose
 multi_file_mode: true
 indent: 4
+read_file_extension: 'json'
 
 # Optional: custom variables for templates (future use)
 variables:
