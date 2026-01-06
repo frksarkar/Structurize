@@ -14,6 +14,8 @@ class Config:
     _output_dir: Path = field(default=Path("generated_project"))
     _working_dir: Path = field(default=Path("structure"))
     _file_path: Path = field(default=Path("structure.tree"))
+    read_file_extension: str = field(default="tree")
+    
     _INVALID_FILENAMES = frozenset(
         [
             ".",
@@ -91,6 +93,8 @@ class Config:
             if isinstance(value, dict) or isinstance(value, list):
                 self.loop_config(cast(ConfigType, value))
                 continue
+            if key == "read_file_extension":
+                value = f".{value}"
             setattr(self, key, value)
 
 
