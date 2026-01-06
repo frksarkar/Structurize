@@ -1,3 +1,4 @@
+import re
 from typing import Tuple
 from tqdm import tqdm
 from pathlib import Path
@@ -14,9 +15,14 @@ class FolderGenerator:
     def generate_folder(self, template_paths: Path_Data):
         if not template_paths:
             return
+        
+        # project name show in progress
+        if re.search(r"\..*$", template_paths[0][0]):
+            project_name = template_paths[0][0].split("/")[0]
+        else:
+            project_name = template_paths[0][0].replace("/", "")
 
-        project_name = template_paths[0][0].replace("/", "")
-
+        # generate folder and file
         for path in tqdm(template_paths, desc=project_name):
             self._generate_file_or_folder(path)
 
@@ -38,6 +44,10 @@ class FolderGenerator:
             file_path.write_text(doc or "", encoding="utf-8")
 
     def _format_command(self, doc: str, ext: str):
+        """
+        format command in File and folder
+        """
+        
         if not doc:
             return
         ext = ext.lower()
