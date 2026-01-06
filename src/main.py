@@ -10,6 +10,7 @@ from core.template_parser import TemplateProcessor
 from utils.path_builder import PathBuilder
 from core.folder_builder import FolderGenerator
 from utils.text_cleaner import TextCleaner
+from src.features.path_converter_from_json import JsonToStructure
 
 
 class Main:
@@ -18,22 +19,37 @@ class Main:
         self.v_field = Validation(self.d_config)
 
     def run_files(self):
+        
+        check_ext = self.d_config.read_file_extension
         files = os.listdir(self.d_config.working_dir)
-        tree_files = [file for file in files if file.endswith(".tree")]
+        tree_files = [file for file in files if file.endswith(check_ext)]
 
         if not tree_files:
             return
 
         if self.d_config.multi_file_mode:
-            for file in tree_files:
-                if file.endswith(".tree"):
-                    self.d_config.file_path = file
-                    self.render_file()
-                    print(end="\n")
+            
+            if check_ext == ".json":
+                for file in tree_files:
+                    if file.endswith(".json"):
+                        self.d_config.file_path = file
+                        self.render_json()
+                        print(end="\n")
+            elif check_ext == ".tree":
+                for file in tree_files:
+                    if file.endswith(".tree"):
+                        self.d_config.file_path = file
+                        self.render_file()
+                        print(end="\n")
         else:
             self.d_config.file_path = tree_files[0]
             self.render_file()
             print(end="\n")
+
+    def run_config(self):
+        pass
+        
+
 
     def render_file(self):
         fm = FileManage(self.d_config.file_path)
@@ -47,7 +63,19 @@ class Main:
         gf = FolderGenerator(self.v_field, self.d_config.output_dir)
         gf.generate_folder(fs.template_paths)
 
+    def render_json(self):
+        fm = FileManage(self.d_config.file_path)
+        fm.read_structure_file()
+        js = JsonToStructure()
+        js.load_json(fm.template_file)
+        js.make_path_to_dict()
+        gf = FolderGenerator(self.v_field, self.d_config.output_dir)
+        gf.generate_folder(js.path)
+        print(js.path)
 
 if __name__ == "__main__":
     Main().run_files()
+    
+    
+    
     print("✅ Project structure generated successfully!", end="\n")
