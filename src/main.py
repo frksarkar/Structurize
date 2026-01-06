@@ -23,28 +23,27 @@ class Main:
         check_ext = self.d_config.read_file_extension
         files = os.listdir(self.d_config.working_dir)
         tree_files = [file for file in files if file.endswith(check_ext)]
-
+        
         if not tree_files:
             return
 
-        if self.d_config.multi_file_mode:
+        if  len(tree_files) > 0 and not self.d_config.multi_file_mode:
+            last_path = os.path.basename(self.d_config.file_path)
+            tree_files = [ file for file in tree_files if file == last_path ]
             
-            if check_ext == ".json":
-                for file in tree_files:
-                    if file.endswith(".json"):
-                        self.d_config.file_path = file
-                        self.render_json()
-                        print(end="\n")
-            elif check_ext == ".tree":
-                for file in tree_files:
-                    if file.endswith(".tree"):
-                        self.d_config.file_path = file
-                        self.render_file()
-                        print(end="\n")
-        else:
-            self.d_config.file_path = tree_files[0]
-            self.render_file()
-            print(end="\n")
+        if check_ext == ".json":
+            for file in tree_files:
+                if file.endswith(".json"):
+                    self.d_config.file_path = file
+                    self.render_json()
+                    print(end="\n")
+        elif check_ext == ".tree":
+            for file in tree_files:
+                if file.endswith(".tree"):
+                    self.d_config.file_path = file
+                    self.render_file()
+                    print(end="\n")
+
 
     def run_config(self):
         pass
