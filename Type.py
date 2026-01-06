@@ -1,8 +1,8 @@
 from enum import Enum
-from typing import List, Pattern, Sequence, TypeAlias, Union
+from typing import List, Pattern, MutableSequence, TypeAlias, Union
 
 ReplacementRule = List[tuple[Pattern[str], str]]
-Path_Data = Sequence[tuple[str, str]]
+Path_Data = MutableSequence[tuple[str, str]]
 ConfigType: TypeAlias = dict[str, Union[str, "ConfigType", list[str]]]
 
 
