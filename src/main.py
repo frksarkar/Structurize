@@ -71,11 +71,7 @@ class Main:
         js.make_path_to_dict()
         gf = FolderGenerator(self.v_field, self.d_config.output_dir)
         gf.generate_folder(js.path)
-        print(js.path)
 
 if __name__ == "__main__":
     Main().run_files()
-    
-    
-    
     print("✅ Project structure generated successfully!", end="\n")
