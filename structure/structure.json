@@ -1,0 +1,73 @@
+{
+	"full-stuck": {
+		"apps": {
+			"app": {
+				"v1": {
+					"v1.module.ts": "",
+					"controllers": {
+						"health.controller.ts": "",
+						"metrics.controller.ts": ""
+					},
+					"auth": {
+						"auth.module.ts": "",
+						"auth.controller.ts": "",
+						"auth.service.ts": "",
+						"strategies": ["jwt.strategy.ts", "local.strategy.ts"],
+						"guards": {
+							"jwt.guard.ts": ""
+						},
+						"dto": {
+							"login.dto.ts": "",
+							"refresh.dto.ts": ""
+						},
+						"commands": {
+							"login.command.ts": "",
+							"logout.command.ts": ""
+						},
+						"handlers": {
+							"login.handler.ts": "",
+							"logout.handler.ts": ""
+						},
+						"events": {
+							"user-logged-in.event.ts": ""
+						},
+						"sagas": {
+							"login.saga.ts": ""
+						}
+					}
+				},
+				"v2": {
+					"v2.module.ts": "",
+					"controllers": {
+						"health.controller.ts": "",
+						"metrics.controller.ts": ""
+					}
+				}
+			},
+			"src": {
+				"src.module.ts": ""
+			}
+		},
+		"libs": {
+			"common": {
+				"common.module.ts": "",
+				"common.service.ts": "",
+				"decorators": {
+					"public.decorator.ts": ""
+				}
+			}
+		},
+		"empty-stuck": {
+			"apps": {
+				"app": {
+					"v1": {
+						"v1.module.ts": "",
+						"controllers": {
+							"health.controller.ts": ""
+						}
+					}
+				}
+			}
+		}
+	}
+}
