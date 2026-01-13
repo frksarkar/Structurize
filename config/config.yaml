@@ -4,17 +4,17 @@
 path:
     output_dir: 'output'
     working_dir: 'structure'
-    file_path: 'structure.tree' # optional if multi_file_mode is false
+    file_path: 'student_manage.tree' # optional if multi_file_mode is false
 
 mode: 'dry-run' # options: normal, dry-run, verbose
 multi_file_mode: true
 indent: 4
-read_file_extension: 'json'
+read_file_extension: 'tree'
 
 # Optional: custom variables for templates (future use)
 variables:
     project_name: 'MyApp'
-    author: 'Your Name'
+    author: 'Omar Faruk Sarkar'
 
 # Comment marker for documentation (optional)
 doc_separator: '##'

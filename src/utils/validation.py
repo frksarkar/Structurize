@@ -23,7 +23,7 @@ class Validation:
 
     @staticmethod
     def validate_file_extension(line: str):
-        if not line.endswith("/"):
+        if not line.endswith("/") and not line.endswith("."):
             file_name = line.strip()
             if "." in file_name:
                 ext = file_name.split(".")[-1]

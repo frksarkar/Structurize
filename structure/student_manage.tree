@@ -1,0 +1,53 @@
+root/
+│
+├── app/
+│   ├── layout.jsx              # Root layout (Navbar, Footer)
+│   ├── page.jsx                # Landing Page
+│   ├── loading.jsx             # Global loading UI
+│   ├── error.jsx               # Global error boundary
+│   ├── login/
+│   │   └── page.jsx            # Login page
+│   ├── items/
+│   │   ├── page.jsx            # Item List Page
+│   │   └── [id]/
+│   │       └── page.jsx        # Item Details Page
+│   ├── dashboard/              # 🔐 Protected route group
+│   │   ├── layout.jsx
+│   │   └── add-item/
+│   │       └── page.jsx        # Add Item Page
+│   └── api/                    # (optional if you proxy Express)
+│
+├── components/
+│   ├── ui/                     # Reusable UI components
+│   │   ├── Button.jsx
+│   │   ├── Input.jsx
+│   │   └── Loader.jsx
+│   │
+│   ├── shared/
+│   │   ├── Navbar.jsx
+│   │   ├── Footer.jsx
+│   │   └── ItemCard.jsx
+│   │
+│   └── motion/                 # Framer Motion wrappers
+│       ├── FadeIn.jsx
+│       └── SlideUp.jsx
+│
+├── lib/
+│   ├── axios.js                # Axios instance
+│   ├── auth.js                 # Auth helpers
+│   ├── cookies.js              # Cookie utils
+│   └── react-query.js          # QueryClient setup
+│
+├── hooks/
+│   ├── useAuth.js
+│   └── useItems.js
+│
+├── styles/
+│   └── globals.css
+│
+├── middleware.js               # Route protection
+│
+├── .env.local
+├── tailwind.config.js
+├── README.md
+└── package.json

@@ -1,5 +1,14 @@
+certifi==2026.1.4
+charset-normalizer==3.4.4
 colorama==0.4.6
+idna==3.11
 py-mon==2.2.0
 PyYAML==6.0.3
+regex==2025.11.3
+requests==2.32.5
+setuptools==80.9.0
+tiktoken==0.12.0
 tqdm==4.67.1
+urllib3==2.6.3
 watchdog==6.0.0
+wheel==0.45.1
