@@ -65,13 +65,22 @@ It helps developers scaffold complex projects quickly, consistently, and without
 
 ## ▶️ Usage
 
+1️⃣ Create & activate environment
 
-1️⃣ Install dependencies
+```bash
+    python -m venv .venv
+    source .venv/bin/activate   # Linux/Mac
+    .venv\Scripts\activate      # Windows
+```
+
+2️⃣ Install dependencies
+
 ```bash
     pip install -r requirements.txt
 ```
 
-2️⃣ Run the generator
+3️⃣ Run the generator
+
 ```bash
     python src/main.py
 ```
@@ -86,9 +95,6 @@ Generated output will appear in the configured `output_dir.`
 4. Validates paths and filenames
 5. Generates folders and files
 6. Injects inline documentation when available
-
-
-
 
 ## 🌱 Future Improvements
 
