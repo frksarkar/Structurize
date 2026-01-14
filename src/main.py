@@ -25,6 +25,7 @@ class Main:
         tree_files = [file for file in files if file.endswith(check_ext)]
         
         if not tree_files:
+            print(f"❌ No '{check_ext}' files found in the directory: {self.d_config.working_dir}")
             return
 
         if  len(tree_files) > 0 and not self.d_config.multi_file_mode:
