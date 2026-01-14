@@ -114,5 +114,5 @@ This project is open source and available under the MIT License.
 
 ## 👤 Author
 
-- [Omar Faruk Sarkar](https://github.com/FarukSarkar)
-- GitHub: https://github.com/FarukSarkar
+- [Omar Faruk Sarkar](https://github.com/frksarkar)
+- GitHub: https://github.com/frksarkar/structurize
